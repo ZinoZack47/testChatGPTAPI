@@ -26,7 +26,7 @@ class TestChatGPTapiApplicationTests {
     ChatGPTService chatGPTService;
 
     //Your ChatGPT API Key
-    final String apiKey = "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";
+    final String apiKey = "sk-8R...";
 
     @Test
     void testCSVWriter() throws IOException {
