@@ -21,12 +21,16 @@ public class CSVWriter implements IDBWriter {
         if(printWriter != null)
             return;
 
+        //Make sure that DATA_PATH is in environment variables
+        String fullPath, dataPath = System.getenv("DATA_PATH");
+        fullPath = dataPath == null ? fileName : dataPath + "/" + fileName;
+
         //Check if it exists
-        File file = new File(fileName);
+        File file = new File(fullPath);
         boolean addHeader = !file.exists() || file.length() == 0;
 
         try {
-            writer = new FileWriter(fileName, true);
+            writer = new FileWriter(fullPath, true);
             bufferedWriter = new BufferedWriter(writer);
             printWriter = new PrintWriter(bufferedWriter);
             if(addHeader) printWriter.println("Question:answer");
