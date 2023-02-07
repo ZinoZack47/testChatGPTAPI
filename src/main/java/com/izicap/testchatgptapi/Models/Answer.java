@@ -66,4 +66,8 @@ public class Answer {
     public void setUsage(Usage usage) {
         this.usage = usage;
     }
+
+    public String extractAnswer() {
+        return choices[0].getText();
+    }
 }

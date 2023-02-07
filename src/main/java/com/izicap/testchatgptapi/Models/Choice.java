@@ -4,13 +4,15 @@ public class Choice {
     private String text;
     private int index;
     private Float logprobs;
+    private String finish_reason;
 
     public Choice() { }
 
-    public Choice(String text, int index, Float logprobs) {
+    public Choice(String text, int index, Float logprobs, String finish_reason) {
         this.text = text;
         this.index = index;
         this.logprobs = logprobs;
+        this.finish_reason = finish_reason;
     }
 
     public String getText() {
@@ -35,5 +37,13 @@ public class Choice {
 
     public void setLogprobs(Float logprobs) {
         this.logprobs = logprobs;
+    }
+
+    public String getFinish_reason() {
+        return finish_reason;
+    }
+
+    public void setFinish_reason(String finish_reason) {
+        this.finish_reason = finish_reason;
     }
 }

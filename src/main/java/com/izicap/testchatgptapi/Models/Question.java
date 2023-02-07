@@ -46,4 +46,8 @@ public class Question {
     public void setTemperature(float temperature) {
         this.temperature = temperature;
     }
+
+    public static Question fromString(String prompt) {
+        return new Question("text-davinci-003", prompt, 4000, 1.0f);
+    }
 }
