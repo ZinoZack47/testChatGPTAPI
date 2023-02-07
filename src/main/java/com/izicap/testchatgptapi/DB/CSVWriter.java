@@ -33,6 +33,7 @@ public class CSVWriter implements IDBWriter {
     @Override
     public void put(String qst, String ans) {
         printWriter.println(qst + separator + ans);
+        printWriter.flush();
     }
 
     @Override
