@@ -68,6 +68,6 @@ public class Answer {
     }
 
     public String extractAnswer() {
-        return choices[0].getText();
+        return choices[0].getText().trim();
     }
 }

@@ -14,9 +14,7 @@ import java.io.FileReader;
 import java.io.IOException;
 
 import org.junit.jupiter.api.Test;
-
 import static org.junit.jupiter.api.Assertions.*;
-
 
 @SpringBootTest
 class TestChatGPTapiApplicationTests {
@@ -26,7 +24,8 @@ class TestChatGPTapiApplicationTests {
     ChatGPTService chatGPTService;
 
     //Your ChatGPT API Key
-    final String apiKey = "sk-8R...";
+    //The API Key should always be kept private. I exposed it only for the sake of this Coding Game
+    final String apiKey = "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";
 
     @Test
     void testCSVWriter() throws IOException {
@@ -81,5 +80,4 @@ class TestChatGPTapiApplicationTests {
 
         assertEquals("That model does not exist", error.getMessage());
     }
-
 }

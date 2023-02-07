@@ -3,8 +3,8 @@ package com.izicap.testchatgptapi.Services;
 import com.izicap.testchatgptapi.Models.Answer;
 import com.izicap.testchatgptapi.Models.Question;
 import com.izicap.testchatgptapi.Models.Response;
-
 import com.izicap.testchatgptapi.Models.Records.ErrorRecord;
+
 import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.http.*;
 import org.springframework.stereotype.Service;
