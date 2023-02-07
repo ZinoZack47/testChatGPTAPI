@@ -21,10 +21,15 @@ public class CSVWriter implements IDBWriter {
         if(printWriter != null)
             return;
 
+        //Check if it exists
+        File file = new File(fileName);
+        boolean addHeader = !file.exists() || file.length() == 0;
+
         try {
             writer = new FileWriter(fileName, true);
             bufferedWriter = new BufferedWriter(writer);
             printWriter = new PrintWriter(bufferedWriter);
+            if(addHeader) printWriter.println("Question:answer");
         } catch (IOException ex) {
           ex.printStackTrace();
         }
