@@ -33,7 +33,7 @@ public class CSVWriter implements IDBWriter {
             writer = new FileWriter(fullPath, true);
             bufferedWriter = new BufferedWriter(writer);
             printWriter = new PrintWriter(bufferedWriter);
-            if(addHeader) printWriter.println("Question:answer");
+            if(addHeader) printWriter.println("Question" + separator + "answer");
         } catch (IOException ex) {
           ex.printStackTrace();
         }

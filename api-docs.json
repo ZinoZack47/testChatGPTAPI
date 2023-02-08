@@ -1,0 +1,158 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "Ask ChatGPT API",
+    "version": "1.0"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:8080"
+    }
+  ],
+  "tags": [
+    {
+      "name": "AskQuestion",
+      "description": "Mappings to Ask ChatGPT"
+    }
+  ],
+  "paths": {
+    "/question/{api}": {
+      "post": {
+        "tags": [
+          "AskQuestion"
+        ],
+        "summary": "Ask a question specifying all available inputs",
+        "description": "        This functionality requires you to specify all required inputs which are:\n        model: which model to use. for example: 'text-davinci-003'.\n        prompt: your question/sentence.\n        max_tokens: The maximum number of tokens to generate in the completion (1000 tokens are roughly 750 words).\n        temperature: What sampling temperature to use. Higher values means the model will take more risks.\n",
+        "externalDocs": {
+          "description": "Check out OpenAI Docs for more information.",
+          "url": "https://platform.openai.com/docs/"
+        },
+        "operationId": "askQuestionFull",
+        "parameters": [
+          {
+            "name": "api",
+            "in": "path",
+            "description": "Your Chat GPT API Key",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "password"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Question"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Answer: ",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Question"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "bearerGPT": [
+
+            ]
+          }
+        ]
+      }
+    },
+    "/ask/{qst}&{api}": {
+      "get": {
+        "tags": [
+          "AskQuestion"
+        ],
+        "summary": "Ask a question directly",
+        "description": "        This functionality uses the model 'text-davinci-003' with max_tokens set to 4000 and temperature set to 1.0.\n",
+        "operationId": "askQuestionQuick",
+        "parameters": [
+          {
+            "name": "qst",
+            "in": "path",
+            "description": "question/sentence to send to ChatGPT",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "example": "What is gluten sensitivity?"
+          },
+          {
+            "name": "api",
+            "in": "path",
+            "description": "your Chat GPT API Key",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "password"
+            },
+            "example": "sk-....47zi"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Answer: ",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Question"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "bearerGPT": [
+
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Question": {
+        "type": "object",
+        "properties": {
+          "model": {
+            "type": "string"
+          },
+          "prompt": {
+            "type": "string"
+          },
+          "max_tokens": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "temperature": {
+            "type": "number",
+            "format": "float"
+          }
+        }
+      }
+    },
+    "securitySchemes": {
+      "BearerGPT": {
+        "type": "http",
+        "description": "Your ChatGPT API Key",
+        "scheme": "bearer",
+        "bearerFormat": "JWT"
+      }
+    }
+  }
+}
